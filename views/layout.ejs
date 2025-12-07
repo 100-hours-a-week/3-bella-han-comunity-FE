@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="<%= typeof description !== 'undefined' ? description : '따끈따끈 식탁🍽️ 커뮤니티' %>">
+    <meta name="keywords" content="커뮤니티, 게시판, 자유게시판">
+    <title><%= typeof title !== 'undefined' ? title + ' - 따끈따끈 식탁🍽️' : '따끈따끈 식탁🍽️' %></title>
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- 추가 CSS가 필요한 경우 -->
+    <% if (typeof additionalCSS !== 'undefined') { %>
+        <%- additionalCSS %>
+    <% } %>
+    <script>
+        window.__ENV__ = JSON.parse('<%- JSON.stringify(__ENV__) %>');
+    </script>
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- 헤더 -->
+        <%- include('partials/header') %>
+
+        <!-- 메인 컨텐츠 영역 -->
+        <div class="content-wrapper">
+            <!-- 사이드바 (필요한 페이지에서만 표시) -->
+            <% if (typeof showSidebar !== 'undefined' && showSidebar) { %>
+                <%- include('partials/sidebar') %>
+            <% } %>
+
+            <!-- 메인 컨텐츠 -->
+            <main class="main-content <%= typeof showSidebar !== 'undefined' && showSidebar ? 'with-sidebar' : '' %>">
+                <%- body %>
+            </main>
+        </div>
+
+        <!-- 푸터 -->
+        <%- include('partials/footer') %>
+    </div>
+
+    <!-- 공통 스크립트 -->
+    <script src="/js/constants.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/main.js"></script>
+    
+    <!-- 페이지별 추가 스크립트 -->
+    <% if (typeof additionalJS !== 'undefined') { %>
+        <%- additionalJS %>
+    <% } %>
+</body>
+</html>
+

@@ -1,16 +1,55 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <!-- 아래 "프로젝트 이름"을 자기 자신의 이름으로 변경 -->
-    <title>채림</title>
+    <title>따끈따끈 식탁🍽️ - 홈</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <section class="wrap">
+    <div id="app">
+        <!-- 네비게이션 -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="nav-title">
+                    <a href="index.html">따끈따끈 식탁🍽️</a>
+                </h1>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link active">홈</a>
+                    <a href="login.html" class="nav-link" id="loginLink">로그인</a>
+                    <a href="signup.html" class="nav-link" id="signupLink">회원가입</a>
+                    <a href="profile.html" class="nav-link" id="profileLink" style="display: none;">내 정보</a>
+                    <a href="#" onclick="logout()" class="nav-link" id="logoutLink" style="display: none;">로그아웃</a>
+                </div>
+            </div>
+        </nav>
 
-		</section>
+        <!-- 메인 컨텐츠 -->
+        <main class="main-content">
+            <div class="page-header" style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+                <button class="btn btn-primary" onclick="location.href='create-post.html'" id="createPostBtn" style="display: none;">글쓰기</button>
+            </div>
+            
+            <div id="postList" class="post-list">
+                <!-- 게시글 목록이 여기에 동적으로 추가됩니다 -->
+            </div>
+            
+            <div class="loading" id="loading" style="display: none;">로딩 중...</div>
+            <button id="loadMoreBtn" class="btn btn-secondary" style="display: none;">더 보기</button>
+        </main>
+    </div>
+
+
+    <!-- 로컬 개발 시 -->
+    <script src=".env.local.js"></script>
+    <!-- 배포 시 -->
+    <!-- <script src=".env.prod.js"></script> -->
+
+    <!-- 공통 스크립트 (순서 중요) -->
+    <script src="/env.js"></script>
+    <script type="module" src="/js/utils.js"></script>
+    <script  type="module" src="/js/api.js"></script>
+    <script  type="module" src="/js/main.js"></script>
+    <script  type="module" src="/js/home.js"></script>
 </body>
 </html>
